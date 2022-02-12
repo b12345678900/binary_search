@@ -1,0 +1,29 @@
+def left_bin_poisk(arr,l,r,n,s):
+    while l<r:
+        m = (l + r-1) // 2
+        if (arr[m]>=s):
+            r=m
+        else:
+            l=m+1
+    if l<n and arr[l]==s:
+        return str(l+1)
+    else:
+        return "0"
+def right_bin_poisk(arr,l,r,n,s):
+    while l + 1 < r:
+        m = (l + r) // 2
+        if (arr[m] > s):
+            r = m
+        else:
+            l = m
+    if arr[l] == s:
+        return str(l + 1)
+    else:
+        return "0"
+
+n=int(input())
+arr=list(map(int,input().split()))
+m=int(input())
+arr1=list(map(int,input().split()))
+for s in arr1:
+    print(left_bin_poisk(arr,0,n,n,s)+" "+right_bin_poisk(arr,0,n,n,s))
